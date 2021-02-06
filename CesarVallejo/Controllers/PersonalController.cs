@@ -7,10 +7,10 @@ namespace CesarVallejo.Controllers
 {
     public class PersonalController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
         [HttpGet]
         [Route("api/Personal/listaPersonal")]

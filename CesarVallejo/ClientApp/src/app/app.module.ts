@@ -9,17 +9,9 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-
-// Registrar el componente creado
-import { ButtonAgregar } from './components/button/Button.component'; 
-import { DiasSemana } from './components/DiasSemana/diasSemana.component';
-
-import { Button } from 'protractor';
 import { PersonalComponent } from './components/personal/personal.component';
-
+import { HijosComponent } from './components/hijos/hijos.component';
 import { PersonalService } from './services/Personal.Service';
-
-import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -28,12 +20,10 @@ import { HttpModule } from '@angular/http';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ButtonAgregar,
-    DiasSemana,
-    PersonalComponent
+    PersonalComponent,
+    HijosComponent
   ],
   imports: [
-    HttpModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
