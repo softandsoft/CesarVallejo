@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -12,6 +14,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { PersonalComponent } from './components/personal/personal.component';
 import { HijosComponent } from './components/hijos/hijos.component';
 import { PersonalService } from './services/Personal.Service';
+import { NuevoPersonalComponent } from './components/nuevo-personal/nuevo-personal.component';
 
 @NgModule({
   declarations: [
@@ -21,17 +24,22 @@ import { PersonalService } from './services/Personal.Service';
     CounterComponent,
     FetchDataComponent,
     PersonalComponent,
-    HijosComponent
+    HijosComponent,
+    NuevoPersonalComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'personal', component: PersonalComponent }
+      { path: 'personal', component: PersonalComponent },
+      { path: 'personal-nuevo', component: NuevoPersonalComponent },
+      { path: 'personal-editar/:id', component: NuevoPersonalComponent },
+      { path: 'hijos', component: HijosComponent },
     ])
   ],
   providers: [PersonalService],
