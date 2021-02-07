@@ -8,9 +8,9 @@ namespace Business
     {
         datHijos instancia = new datHijos();
 
-        public List<Hijos> GetAllHijos()
+        public List<Hijos> GetAllHijosByIdPersonal(int id)
         {
-            return instancia.GetAllHijos();
+            return instancia.GetAllHijosByIdPersonal(id);
         }
 
         public Hijos GetHijosById(int? id)

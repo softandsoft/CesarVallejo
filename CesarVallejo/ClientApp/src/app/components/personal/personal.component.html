@@ -14,6 +14,7 @@
       <td>{{ persona.fhcNac }}</td>
       <td>{{ persona.fhcIngreso }}</td>
       <td>
+        <i [routerLink]="['/personal-hijos', persona.idPersonal]" class="btn btn-success">Ver hijos</i>
         <i [routerLink]="['/personal-editar', persona.idPersonal]" class="btn btn-primary">Editar</i>
         <i class="btn btn-danger" (click)="deletePersonal(persona.idPersonal)">Eliminar</i>
       </td>

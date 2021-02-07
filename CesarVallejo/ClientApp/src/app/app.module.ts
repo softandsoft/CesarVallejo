@@ -13,8 +13,9 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { PersonalComponent } from './components/personal/personal.component';
 import { HijosComponent } from './components/hijos/hijos.component';
-import { PersonalService } from './services/Personal.Service';
 import { NuevoPersonalComponent } from './components/nuevo-personal/nuevo-personal.component';
+import { PersonalService } from './services/Personal.Service';
+import { HijosService } from './services/Hijos.Service';
 
 @NgModule({
   declarations: [
@@ -39,10 +40,10 @@ import { NuevoPersonalComponent } from './components/nuevo-personal/nuevo-person
       { path: 'personal', component: PersonalComponent },
       { path: 'personal-nuevo', component: NuevoPersonalComponent },
       { path: 'personal-editar/:id', component: NuevoPersonalComponent },
-      { path: 'hijos', component: HijosComponent },
+      { path: 'personal-hijos/:id', component: HijosComponent },
     ])
   ],
-  providers: [PersonalService],
+  providers: [PersonalService, HijosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

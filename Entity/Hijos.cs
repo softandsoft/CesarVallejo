@@ -14,5 +14,6 @@ namespace Entity
         public string Nombre2 { get; set; }
         public string NombreCompleto { get; set; }
         public DateTime FhcNac { get; set; }
+        public Personal personal { get; set; }
     }
 }

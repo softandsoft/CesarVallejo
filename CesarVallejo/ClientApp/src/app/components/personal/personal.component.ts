@@ -9,7 +9,7 @@ import { PersonalService } from '../../services/Personal.Service'
 export class PersonalComponent implements OnInit {
 
   personas: any;
-  cabeceras: string[] = ["Id", "Nombre Completo", "Fecha Nac", "Fecha Ingreso", "Acción"]
+  cabeceras: string[] = ["Id", "Nombre Completo", "Fecha Nac", "Fecha Ingreso", "Acciones"]
   constructor(private personalService: PersonalService) { }
 
   ngOnInit() {

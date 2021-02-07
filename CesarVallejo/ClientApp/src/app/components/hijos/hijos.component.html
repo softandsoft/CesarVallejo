@@ -1,1 +1,26 @@
-<p>hijos works!</p>
+
+  <h2>Listado de hijos de {{ hijos[0].personal.nombreCompleto }}</h2>
+
+<a [routerLink]="['/hijos-nuevo']" class="btn btn-success">Nuevo</a>
+<a [routerLink]="['/personal']" class="btn btn-secondary">Volver</a>
+
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th *ngFor="let cabecera of cabeceras">{{ cabecera }}</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let hijo of hijos">
+      <td>{{ hijo.idDerHab }}</td>
+      <td>{{ hijo.nombreCompleto }}</td>
+      <td>{{ hijo.fhcNac }}</td>
+      <td>
+        <i [routerLink]="['/hijos-editar', hijo.idDerHab]" class="btn btn-primary">Editar</i>
+        <i class="btn btn-danger" (click)="deleteHijo(hijo.idDerHab)">Eliminar</i>
+      </td>
+    </tr>
+  </tbody>
+</table>

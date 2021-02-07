@@ -10,7 +10,7 @@ namespace Data
     {
         string connectionString = "Server=upc-taller-de-proyectos-1-grupo-1.cef9njusnoa5.us-east-1.rds.amazonaws.com,1433;Initial Catalog=CesarVallejo;Persist Security Info=False;User ID=admin;Password=7LJTeBtX2G1vT4Pa48AQ;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;";
 
-        public List<Hijos> GetAllHijos()
+        public List<Hijos> GetAllHijosByIdPersonal(int id)
         {
             List<Hijos> list = new List<Hijos>();
 
@@ -18,6 +18,7 @@ namespace Data
             {
                 SqlCommand comando = new SqlCommand("SelectHijos", connection);
                 comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@IdPersonal", id);
                 connection.Open();
 
                 SqlDataReader lector = comando.ExecuteReader();
@@ -35,6 +36,8 @@ namespace Data
                     entity.Nombre2 = lector["Nombre2"].ToString();
                     entity.NombreCompleto = lector["NombreCompleto"].ToString();
                     entity.FhcNac = Convert.ToDateTime(lector["FhcNac"].ToString());
+                    entity.personal = new Personal();
+                    entity.personal.NombreCompleto = lector["NombreCompletoPersonal"].ToString();
 
                     list.Add(entity);
                 }
