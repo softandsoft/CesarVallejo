@@ -47,7 +47,7 @@ export class NuevoPersonalComponent implements OnInit {
         //this.personal.controls["idPersonal"].setValue(param.idPersonal);
         //this.personal.controls["nombre1"].setValue(param.nombre1);
         //this.personal.controls["nombre2"].setValue(param.nombre2);
-        //this.personal.controls["apPaterno"].setValue(param.apPaterno);
+        this.personal.controls["apPaterno"].setValue("sale error al intentar setear");
         //this.personal.controls["apMaterno"].setValue(param.apMaterno);
         //this.personal.controls["fhcNac"].setValue(param.fhcNac);
         //this.personal.controls["fhcIngreso"].setValue(param.fhcIngreso);
