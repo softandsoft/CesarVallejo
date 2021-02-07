@@ -116,7 +116,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-ALTER PROCEDURE DeletePersonal
+CREATE PROCEDURE DeletePersonal
 @IdPersonal INT
 AS
 BEGIN
