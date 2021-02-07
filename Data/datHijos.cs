@@ -8,7 +8,7 @@ namespace Data
 {
     public class datHijos
     {
-        string connectionString = "Data Source = localhost; Initial Catalog = CesarVallejo; User ID=sa; Password = P@ssw0rd";
+        string connectionString = "Data Source = localhost; Initial Catalog = CesarVallejo; Integrated Security = true";
 
         public List<Hijos> GetAllHijos()
         {

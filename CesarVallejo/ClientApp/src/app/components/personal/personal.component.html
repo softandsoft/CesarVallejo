@@ -1,17 +1,22 @@
-<table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th *ngFor="let cabecera of cabeceras">{{ cabecera }}</th>
-      </tr>
-    </thead>
+<a [routerLink]="['/personal-nuevo']" class="btn btn-success">Nuevo</a>
 
-    <tbody>
-      <tr *ngFor="let persona of personas">
-        <td>{{ persona.IdPersonal }}</td>
-        <td>{{ persona.NombreCompleto }}</td>
-        <td>{{ persona.FhcNac }}</td>
-        <td>{{ persona.FhcIngreso }}</td>
-        <td></td>
-      </tr>
-    </tbody>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th *ngFor="let cabecera of cabeceras">{{ cabecera }}</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let persona of personas">
+      <td>{{ persona.idPersonal }}</td>
+      <td>{{ persona.nombreCompleto }}</td>
+      <td>{{ persona.fhcNac }}</td>
+      <td>{{ persona.fhcIngreso }}</td>
+      <td>
+        <i [routerLink]="['/personal-editar', persona.idPersonal]" class="btn btn-primary">Editar</i>
+        <i class="btn btn-danger" (click)="deletePersonal(persona.idPersonal)">Eliminar</i>
+      </td>
+    </tr>
+  </tbody>
 </table>
