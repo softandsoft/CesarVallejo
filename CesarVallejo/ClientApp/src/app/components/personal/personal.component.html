@@ -1,23 +1,56 @@
-<a [routerLink]="['/personal-nuevo']" class="btn btn-success">Nuevo</a>
+<button mat-button color="primary" [routerLink]="['/personal-nuevo']">Nuevo</button>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th *ngFor="let cabecera of cabeceras">{{ cabecera }}</th>
-    </tr>
-  </thead>
+<!--<table mat-table class="mat-elevation-z8">
 
-  <tbody>
-    <tr *ngFor="let persona of personas">
-      <td>{{ persona.idPersonal }}</td>
-      <td>{{ persona.nombreCompleto }}</td>
-      <td>{{ persona.fhcNac }}</td>
-      <td>{{ persona.fhcIngreso }}</td>
-      <td>
-        <i [routerLink]="['/personal-hijos', persona.idPersonal]" class="btn btn-success">Ver hijos</i>
-        <i [routerLink]="['/personal-editar', persona.idPersonal]" class="btn btn-primary">Editar</i>
-        <i class="btn btn-danger" (click)="deletePersonal(persona.idPersonal)">Eliminar</i>
-      </td>
-    </tr>
-  </tbody>
+  <tr>
+    <th *ngFor="let column of displayedColumns">{{ column }}</th>
+  </tr>
+
+  <tr *ngFor="let data of dataSource">
+    <td>{{ data.idPersonal }}</td>
+    <td>{{ data.nombreCompleto }}</td>
+    <td>{{ data.fhcNac }}</td>
+    <td>{{ data.fhcIngreso }}</td>
+    <td>
+      <button mat-button color="primary" [routerLink]="['/personal-hijos', data.idPersonal]">Ver hijos</button>
+      <button mat-button color="accent" [routerLink]="['/personal-editar', data.idPersonal]">Editar</button>
+      <button mat-button color="warn" (click)="deletePersonal(data.idPersonal)">Eliminar</button>
+    </td>
+  </tr>
+</table>-->
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="idPersonal">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.idPersonal}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombreCompleto">
+    <th mat-header-cell *matHeaderCellDef> Nombre completo </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombreCompleto}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fhcNac">
+    <th mat-header-cell *matHeaderCellDef> Fecha nacimiento </th>
+    <td mat-cell *matCellDef="let element"> {{element.fhcNac}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fhcIngreso">
+    <th mat-header-cell *matHeaderCellDef> Fecha ingreso </th>
+    <td mat-cell *matCellDef="let element"> {{element.fhcIngreso}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let element" class="action-link">
+      <button mat-button color="primary" [routerLink]="['/personal-hijos', element.idPersonal]">Ver hijos</button>
+      <button mat-button color="accent" [routerLink]="['/personal-editar', element.idPersonal]">Editar</button>
+      <button mat-button color="warn" (click)="deletePersonal(element.idPersonal)">Eliminar</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

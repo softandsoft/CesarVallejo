@@ -8,15 +8,15 @@ import { PersonalService } from '../../services/Personal.Service'
 })
 export class PersonalComponent implements OnInit {
 
-  personas: any;
-  cabeceras: string[] = ["Id", "Nombre Completo", "Fecha Nac", "Fecha Ingreso", "Acciones"]
+  displayedColumns: string[] = ['idPersonal', 'nombreCompleto', 'fhcNac', 'fhcIngreso', 'acciones'];
+  dataSource: any;
+
   constructor(private personalService: PersonalService) { }
 
   ngOnInit() {
     this.personalService.getPersonal().subscribe((data: any) => {
-        console.log(data);
-        debugger
-        this.personas = data;
+      console.log(data);
+      this.dataSource = data;
     });
   }
 
@@ -24,7 +24,7 @@ export class PersonalComponent implements OnInit {
     if (confirm("Esta seguro de eliminar?") == true) {
       this.personalService.deletePersonal(id).subscribe(data => {
         this.personalService.getPersonal().subscribe((data: any) => {
-          this.personas = data;
+          this.dataSource = data;
         });
       });
     }

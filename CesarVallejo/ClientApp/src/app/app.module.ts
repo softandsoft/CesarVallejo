@@ -16,6 +16,9 @@ import { HijosComponent } from './components/hijos/hijos.component';
 import { NuevoPersonalComponent } from './components/nuevo-personal/nuevo-personal.component';
 import { PersonalService } from './services/Personal.Service';
 import { HijosService } from './services/Hijos.Service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import { HijosService } from './services/Hijos.Service';
       { path: 'personal-nuevo', component: NuevoPersonalComponent },
       { path: 'personal-editar/:id', component: NuevoPersonalComponent },
       { path: 'personal-hijos/:id', component: HijosComponent },
-    ])
+    ]),
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [PersonalService, HijosService],
   bootstrap: [AppComponent]

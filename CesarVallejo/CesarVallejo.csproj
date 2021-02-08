@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\material.module.ts" />
     <None Remove="ClientApp\src\app\services\Hijos.Service.ts" />
   </ItemGroup>
 
@@ -38,6 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\material.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\Hijos.Service.ts" />
   </ItemGroup>
 
