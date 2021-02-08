@@ -44,13 +44,14 @@ export class NuevoPersonalComponent implements OnInit {
     if (this.parametro != null) {
       this.personalService.getPersonalPorId(this.parametro).subscribe(param => {
 
-        this.personal.controls["idPersonal"].setValue(param.idPersonal);
-        this.personal.controls["nombre1"].setValue(param.nombre1);
-        this.personal.controls["nombre2"].setValue(param.nombre2);
-        this.personal.controls["apPaterno"].setValue(param.apPaterno);
-        this.personal.controls["apMaterno"].setValue(param.apMaterno);
-        this.personal.controls["fhcNac"].setValue(param.fhcNac);
-        this.personal.controls["fhcIngreso"].setValue(param.fhcIngreso);
+        this.personal.controls["nombre1"].setValue("sale error al setear los datos");
+        //this.personal.controls["idPersonal"].setValue(param.idPersonal);
+        //this.personal.controls["nombre1"].setValue(param.nombre1);
+        //this.personal.controls["nombre2"].setValue(param.nombre2);
+        //this.personal.controls["apPaterno"].setValue(param.apPaterno);
+        //this.personal.controls["apMaterno"].setValue(param.apMaterno);
+        //this.personal.controls["fhcNac"].setValue(param.fhcNac);
+        //this.personal.controls["fhcIngreso"].setValue(param.fhcIngreso);
       });
     }
   }
