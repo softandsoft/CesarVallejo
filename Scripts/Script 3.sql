@@ -5,25 +5,25 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-ALTER PROCEDURE SelectHijos 2
+ALTER PROCEDURE SelectHijos 1
 @IdPersonal INT
 AS
 BEGIN
 	SET NOCOUNT ON;
 
-	SELECT ISNULL(hij.[IdDerHab], 0) AS [IdDerHab]
-		  ,ISNULL(hij.[IdPersonal], '') AS [IdPersonal]
-		  ,ISNULL(hij.[ApPaterno], '') AS [ApPaterno]
-		  ,ISNULL(hij.[ApMaterno], '') AS [ApMaterno]
-		  ,ISNULL(hij.[Nombre1], '') AS [Nombre1]
-		  ,ISNULL(hij.[Nombre2], '') AS [Nombre2]
-		  ,ISNULL(hij.[NombreCompleto], '') AS [NombreCompleto]
-		  ,ISNULL(hij.[FhcNac], '') AS [FhcNac]
+	SELECT hij.[IdDerHab]
+		  ,hij.[IdPersonal]
+		  ,hij.[ApPaterno]
+		  ,hij.[ApMaterno]
+		  ,hij.[Nombre1]
+		  ,hij.[Nombre2]
+		  ,hij.[NombreCompleto]
+		  ,hij.[FhcNac]
 		  ,per.NombreCompleto AS [NombreCompletoPersonal]
 	FROM Personal per
-	LEFT JOIN [dbo].[Hijos] hij ON(hij.IdPersonal = per.IdPersonal)
+		INNER JOIN [dbo].[Hijos] hij ON(hij.IdPersonal = per.IdPersonal)
 	WHERE
-		per.[IdPersonal] = @IdPersonal
+		hij.[IdPersonal] = @IdPersonal
 END
 
 GO

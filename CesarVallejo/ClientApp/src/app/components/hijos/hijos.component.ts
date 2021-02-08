@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HijosService } from '../../services/Hijos.Service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-hijos',
@@ -9,11 +11,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HijosComponent implements OnInit {
 
-  hijos: any;
-  cabeceras: string[] = ["Id", "Nombre Completo", "Fecha Nac", "Acciones"];
+  displayedColumns: string[] = ['idDerHab', 'nombreCompleto', 'fhcNac', 'acciones'];
+  dataSource: any;
+
   idPersonal: string;
 
-  constructor(private hijosService: HijosService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private hijosService: HijosService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
+              public dialog: MatDialog) {
+
     this.activatedRoute.params.subscribe(parametro => {
       this.idPersonal = parametro["id"];
     });
@@ -21,7 +28,19 @@ export class HijosComponent implements OnInit {
 
   ngOnInit() {
     this.hijosService.getHijosPorIdPersonal(this.idPersonal).subscribe((data: any) => {
-      this.hijos = data;
+      this.dataSource = data;
+    });
+  }
+
+  openDialog(element) {
+    const dialogRef = this.dialog.open(DialogComponent, { data: { name: element.nombreCompleto } });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+
+      if (result) {
+        //this.deleteHijo(element.idDerHab);
+      }
     });
   }
 

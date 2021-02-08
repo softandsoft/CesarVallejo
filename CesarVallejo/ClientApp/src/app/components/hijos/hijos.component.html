@@ -1,26 +1,32 @@
+<h3>Listado de hijos de {{ dataSource[0].personal.nombreCompleto }}</h3>
 
-  <h2>Listado de hijos de {{ hijos[0].personal.nombreCompleto }}</h2>
+<button mat-button color="primary" [routerLink]="['/hijos-nuevo']">Nuevo</button>
+<button mat-button [routerLink]="['/personal']">Volver</button>
 
-<a [routerLink]="['/hijos-nuevo']" class="btn btn-success">Nuevo</a>
-<a [routerLink]="['/personal']" class="btn btn-secondary">Volver</a>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="idDerHab">
+    <th mat-header-cell *matHeaderCellDef> ID. </th>
+    <td mat-cell *matCellDef="let element"> {{element.idDerHab}} </td>
+  </ng-container>
 
+  <ng-container matColumnDef="nombreCompleto">
+    <th mat-header-cell *matHeaderCellDef> Nombre completo </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombreCompleto}} </td>
+  </ng-container>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th *ngFor="let cabecera of cabeceras">{{ cabecera }}</th>
-    </tr>
-  </thead>
+  <ng-container matColumnDef="fhcNac">
+    <th mat-header-cell *matHeaderCellDef> Fecha nacimiento </th>
+    <td mat-cell *matCellDef="let element"> {{element.fhcNac}} </td>
+  </ng-container>
 
-  <tbody>
-    <tr *ngFor="let hijo of hijos">
-      <td>{{ hijo.idDerHab }}</td>
-      <td>{{ hijo.nombreCompleto }}</td>
-      <td>{{ hijo.fhcNac }}</td>
-      <td>
-        <i [routerLink]="['/hijos-editar', hijo.idDerHab]" class="btn btn-primary">Editar</i>
-        <i class="btn btn-danger" (click)="deleteHijo(hijo.idDerHab)">Eliminar</i>
-      </td>
-    </tr>
-  </tbody>
+  <ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let element" class="action-link">
+      <button mat-button color="accent" [routerLink]="['/hijos-editar', element.idDerHab]">Editar</button>
+      <button mat-button color="warn" (click)="openDialog(element)">Eliminar</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

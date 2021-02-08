@@ -1,51 +1,44 @@
-<h1>{{ titulo }}</h1>
+<h3>{{ titulo }}</h3>
 
-<div class="row">
-  <div class="col-md-12">
-    <form [formGroup]="personal" (ngSubmit)="savePersonal()">
+<form [formGroup]="personal" (ngSubmit)="savePersonal()" class="form">
 
-      <div class="form-group">
-        <label>Código</label>
-        <input type="text" class="form-control" readonly formControlName="idPersonal" />
-      </div>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Código" readonly formControlName="idPersonal">
+  </mat-form-field>
 
-      <div class="form-group">
-        <label>Primer nombre</label>
-        <input type="text" class="form-control" formControlName="nombre1" />
-      </div>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Primer nombre" value="" formControlName="nombre1">
+  </mat-form-field>
 
-      <div class="form-group">
-        <label>Segundo nombre</label>
-        <input type="text" class="form-control" formControlName="nombre2" />
-      </div>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Segundo nombre" value="" formControlName="nombre2">
+  </mat-form-field>
 
-      <div class="form-group">
-        <label>Primer apellido</label>
-        <input type="text" class="form-control" formControlName="apPaterno" />
-      </div>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Primer apellido" value="" formControlName="apPaterno">
+  </mat-form-field>
 
-      <div class="form-group">
-        <label>Segundo apellido</label>
-        <input type="text" class="form-control" formControlName="apMaterno" />
-      </div>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Segundo apellido" value="" formControlName="apMaterno">
+  </mat-form-field>
 
-      <div class="form-group">
-        <label>Fecha nacimiento</label>
-        <input type="date" class="form-control" formControlName="fhcNac" />
-      </div>
+  <mat-form-field>
+    <input matInput [matDatepicker]="fhcNac" placeholder="Fecha de nacimiento" formControlName="fhcNac">
+    <mat-datepicker-toggle matSuffix [for]="fhcNac"></mat-datepicker-toggle>
+    <mat-datepicker #fhcNac></mat-datepicker>
+  </mat-form-field>
 
-      <div class="form-group">
-        <label>Fecha ingreso</label>
-        <input type="date" class="form-control" formControlName="fhcIngreso" />
-      </div>
+  <mat-form-field>
+    <input matInput [matDatepicker]="fhcIngreso" placeholder="Fecha de ingreso" formControlName="fhcIngreso">
+    <mat-datepicker-toggle matSuffix [for]="fhcIngreso"></mat-datepicker-toggle>
+    <mat-datepicker #fhcIngreso></mat-datepicker>
+  </mat-form-field>
 
-      <div>
-        <input [disabled]="!personal.valid" type="submit" value="Guardar" class="btn btn-primary" />
-        <button [routerLink]="['/personal']" class="btn btn-secondary">Volver</button>
-      </div>
-    </form>
+  <div>
+    <button mat-button color="primary" [disabled]="!personal.valid" type="submit">Guardar</button>
+    <button mat-button [routerLink]="['/personal']">Volver</button>
   </div>
-</div>
+</form>
 
 
 <div style="margin:1em" *ngIf="personal.valid==false">

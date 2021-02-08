@@ -19,6 +19,7 @@ import { HijosService } from './services/Hijos.Service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './material.module';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +30,10 @@ import { MaterialModule } from './material.module';
     FetchDataComponent,
     PersonalComponent,
     HijosComponent,
-    NuevoPersonalComponent
+    NuevoPersonalComponent,
+    DialogComponent
   ],
+  entryComponents: [DialogComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,

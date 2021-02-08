@@ -1,29 +1,8 @@
 <button mat-button color="primary" [routerLink]="['/personal-nuevo']">Nuevo</button>
 
-<!--<table mat-table class="mat-elevation-z8">
-
-  <tr>
-    <th *ngFor="let column of displayedColumns">{{ column }}</th>
-  </tr>
-
-  <tr *ngFor="let data of dataSource">
-    <td>{{ data.idPersonal }}</td>
-    <td>{{ data.nombreCompleto }}</td>
-    <td>{{ data.fhcNac }}</td>
-    <td>{{ data.fhcIngreso }}</td>
-    <td>
-      <button mat-button color="primary" [routerLink]="['/personal-hijos', data.idPersonal]">Ver hijos</button>
-      <button mat-button color="accent" [routerLink]="['/personal-editar', data.idPersonal]">Editar</button>
-      <button mat-button color="warn" (click)="deletePersonal(data.idPersonal)">Eliminar</button>
-    </td>
-  </tr>
-</table>-->
-
-
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
   <ng-container matColumnDef="idPersonal">
-    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <th mat-header-cell *matHeaderCellDef> ID. </th>
     <td mat-cell *matCellDef="let element"> {{element.idPersonal}} </td>
   </ng-container>
 
@@ -47,10 +26,12 @@
     <td mat-cell *matCellDef="let element" class="action-link">
       <button mat-button color="primary" [routerLink]="['/personal-hijos', element.idPersonal]">Ver hijos</button>
       <button mat-button color="accent" [routerLink]="['/personal-editar', element.idPersonal]">Editar</button>
-      <button mat-button color="warn" (click)="deletePersonal(element.idPersonal)">Eliminar</button>
+      <button mat-button color="warn" (click)="openDialog(element)">Eliminar</button>
     </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+
