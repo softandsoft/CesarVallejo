@@ -8,7 +8,7 @@ namespace Data
 {
     public class datPersonal
     {
-        string connectionString = "Server=upc-taller-de-proyectos-1-grupo-1.cef9njusnoa5.us-east-1.rds.amazonaws.com,1433;Initial Catalog=CesarVallejo;Persist Security Info=False;User ID=admin;Password=7LJTeBtX2G1vT4Pa48AQ;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;";
+        string connectionString = "Server=;Initial Catalog=CesarVallejo;Persist Security Info=False;User ID=;Password=;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;";
 
         public List<Personal> GetAllPersonal()
         {
