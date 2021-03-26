@@ -8,7 +8,7 @@ namespace Data
 {
     public class datHijos
     {
-        string connectionString = "Server=,1433;Initial Catalog=CesarVallejo;Persist Security Info=False;User ID=;Password=;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;";
+        string connectionString = "Server=localhost;Initial Catalog=CesarVallejo;User ID=sa;Password=P@ssw0rd;";
 
         public List<Hijos> GetAllHijosByIdPersonal(int id)
         {

@@ -78,6 +78,14 @@ namespace CesarVallejo.Controllers
             };
         }
 
+        [HttpGet]
+        [Route("api/Personal/filtrarPersonalPorNombre/{name}")]
+        public IEnumerable<Personal> GetPersonalByName(string name)
+        {
+            busPersonal instancia = new busPersonal();
+            return instancia.GetPersonalByName(name);
+        }
+
         [HttpDelete]
         [Route("api/Personal/eliminarPersonal/{id}")]
         public int DeletePersonal(int id)

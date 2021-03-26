@@ -18,6 +18,11 @@ namespace Business
             return instancia.GetPersonalById(id);
         }
 
+        public List<Personal> GetPersonalByName(string name)
+        {
+            return instancia.GetPersonalByName(name);
+        }
+
         public void AddPersonal(Personal entity)
         {
             instancia.AddPersonal(entity);

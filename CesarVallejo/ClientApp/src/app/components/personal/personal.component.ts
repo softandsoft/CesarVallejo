@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PersonalService } from '../../services/Personal.Service'
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -11,9 +11,13 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class PersonalComponent implements OnInit {
 
   displayedColumns: string[] = ['idPersonal', 'nombreCompleto', 'fhcNac', 'fhcIngreso', 'acciones'];
+
+  @Input()
   dataSource: any;
 
-  constructor(private personalService: PersonalService, public dialog: MatDialog) { }
+  constructor(private personalService: PersonalService, public dialog: MatDialog) {
+
+  };
 
   ngOnInit() {
     this.personalService.getPersonal().subscribe((data: any) => {
@@ -35,15 +39,10 @@ export class PersonalComponent implements OnInit {
   }
 
   deletePersonal(id) {
-      this.personalService.deletePersonal(id).subscribe(data => {
-        this.personalService.getPersonal().subscribe((data: any) => {
-          this.dataSource = data;
-        });
+    this.personalService.deletePersonal(id).subscribe(data => {
+      this.personalService.getPersonal().subscribe((data: any) => {
+        this.dataSource = data;
       });
+    });
   }
 }
-
-
-
-
-

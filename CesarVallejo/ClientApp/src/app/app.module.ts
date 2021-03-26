@@ -20,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './material.module';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { FiltradoPersonalComponent } from './components/filtrado-personal/filtrado-personal.component';
+import { FiltroPersonalComponent } from './components/filtro-personal/filtro-personal.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { DialogComponent } from './components/dialog/dialog.component';
     PersonalComponent,
     HijosComponent,
     NuevoPersonalComponent,
-    DialogComponent
+    DialogComponent,
+    FiltradoPersonalComponent,
+    FiltroPersonalComponent
   ],
   entryComponents: [DialogComponent],
   imports: [
@@ -44,6 +48,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'personal', component: PersonalComponent },
+      { path: 'personal-filtrado', component: FiltradoPersonalComponent },
       { path: 'personal-nuevo', component: NuevoPersonalComponent },
       { path: 'personal-editar/:id', component: NuevoPersonalComponent },
       { path: 'personal-hijos/:id', component: HijosComponent },

@@ -53,6 +53,36 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
+CREATE PROCEDURE SelectPersonalByName
+@Nombre VARCHAR(203)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT [IdPersonal]
+		  ,[ApPaterno]
+		  ,[ApMaterno]
+		  ,[Nombre1]
+		  ,[Nombre2]
+		  ,[NombreCompleto]
+		  ,[FhcNac]
+		  ,[FhcIngreso]
+	FROM [dbo].[Personal]		
+	WHERE
+		[NombreCompleto] LIKE '%' + @Nombre + '%'
+END
+
+GO
+
+EXEC SelectPersonalByName 'HUA'
+
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
 CREATE PROCEDURE InsertPersonal
 @ApPaterno	VARCHAR(50)
 ,@ApMaterno VARCHAR(50)

@@ -1,0 +1,8 @@
+
+<mat-form-field class="example-full-width">
+  <mat-label>Filtrar por nombre</mat-label>
+  <input matInput value="" #nombre>
+</mat-form-field>
+
+<button mat-button (click)="onBuscar(nombre.value)" color="accent">Buscar...</button>
+<button mat-button (click)="onLimpiar(nombre)">Limpiar</button>

@@ -41,6 +41,10 @@ export class PersonalService {
     debugger
     return this.http.delete(this.urlBase + "api/Personal/eliminarPersonal/" + id);
   }
+
+  public GetPersonalPorName(name) {
+    return this.http.get(this.urlBase + "api/Personal/filtrarPersonalPorNombre/" + name);
+  }
 }
 
 

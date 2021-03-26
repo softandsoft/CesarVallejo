@@ -7,8 +7,8 @@ using System.Data.SqlClient;
 namespace Data
 {
     public class datPersonal
-    {
-        string connectionString = "Server=;Initial Catalog=CesarVallejo;Persist Security Info=False;User ID=;Password=;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;";
+    {        
+        string connectionString = "Server=localhost;Initial Catalog=CesarVallejo;User ID=sa;Password=P@ssw0rd;";
 
         public List<Personal> GetAllPersonal()
         {
@@ -18,6 +18,7 @@ namespace Data
             {
                 SqlCommand comando = new SqlCommand("SelectPersonal", connection);
                 comando.CommandType = CommandType.StoredProcedure;
+
                 connection.Open();
 
                 SqlDataReader lector = comando.ExecuteReader();
@@ -76,6 +77,43 @@ namespace Data
             }
 
             return entity;
+        }
+
+        public List<Personal> GetPersonalByName(string name)
+        {
+            List<Personal> list = new List<Personal>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand comando = new SqlCommand("SelectPersonalByName", connection);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@Nombre", name);
+
+                connection.Open();
+
+                SqlDataReader lector = comando.ExecuteReader();
+
+                Personal entity = null;
+
+                while (lector.Read())
+                {
+                    entity = new Personal();
+                    entity.IdPersonal = Convert.ToInt32(lector["IdPersonal"]);
+                    entity.ApPaterno = lector["ApPaterno"].ToString();
+                    entity.ApMaterno = lector["ApMaterno"].ToString();
+                    entity.Nombre1 = lector["Nombre1"].ToString();
+                    entity.Nombre2 = lector["Nombre2"].ToString();
+                    entity.NombreCompleto = lector["NombreCompleto"].ToString();
+                    entity.FhcNac = Convert.ToDateTime(lector["FhcNac"].ToString());
+                    entity.FhcIngreso = Convert.ToDateTime(lector["FhcIngreso"].ToString());
+
+                    list.Add(entity);
+                }
+
+                connection.Close();
+            }
+
+            return list;
         }
 
         public void AddPersonal(Personal entity)
